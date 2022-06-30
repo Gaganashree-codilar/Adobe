@@ -6,10 +6,9 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Customer\Controller\Account\EditPost">
-        <plugin name="default_password" type="Gaganashree\Assignment3\Plugin\ChangePassword" sortOrder="1"
+    <type name="Magento\Customer\Api\AccountManagementInterface">
+        <plugin name="default_password" type="Gaganashree\Assignment3\Plugin\Api\AccountManagement" sortOrder="1"
                 disabled="false"/>
     </type>
-    <preference for="Magento\Customer\Controller\Account\EditPost"
-                type="Gaganashree\Assignment3\Controller\Preference\ResetPassword"/>
+ <preference for="Magento\Customer\Controller\Account\EditPost" type="Gaganashree\Assignment3\Controller\Preference\ResetPassword"/>
 </config>
