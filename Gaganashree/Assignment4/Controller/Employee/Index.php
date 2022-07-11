@@ -22,6 +22,7 @@ class Index extends Action
 
     /**
      * Index constructor.
+     *
      * @param Context $context
      * @param JsonFactory $jsonFactory
      * @param EmployeeRepositoryInterface $employeeRepositoryInterface
@@ -45,7 +46,7 @@ class Index extends Action
     public function execute()
     {
         $result = $this->jsonFactory->create();
-        $employeeData = $this->employeeRepositoryInterface->getDataBYId('1');
+        $employeeData = $this->employeeRepositoryInterface->getCollection();
         return $result->setData($employeeData);
     }
 }

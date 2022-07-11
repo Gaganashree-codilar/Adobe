@@ -5,7 +5,7 @@ use Gaganashree\Assignment4\Api\EmployeeRepositoryInterface;
 use Gaganashree\Assignment4\Model\Employee as Model;
 use Gaganashree\Assignment4\Model\EmployeeFactory as ModelFactory;
 use Gaganashree\Assignment4\Model\ResourceModel\Employee as ResourceModel;
-use Gaganashree\Assignment4\Model\ResourceModel\Employee\Collection;
+use Gaganashree\Assignment4\Model\ResourceModel\Employee\CollectionFactory;
 
 class EmployeeRepository implements EmployeeRepositoryInterface
 {
@@ -17,20 +17,36 @@ class EmployeeRepository implements EmployeeRepositoryInterface
      * @var ResourceModel
      */
     private $resourceModel;
+    /**
+     * @var CollectionFactory
+     */
+    private $CollectionFactory;
 
     /**
      * SellerRepository constructor.
      * @param ModelFactory $modelFactory
      * @param ResourceModel $resourceModel
+     * @param CollectionFactory $collectionFactory
      */
     public function __construct(
         ModelFactory $modelFactory,
-        ResourceModel $resourceModel
+        ResourceModel $resourceModel,
+        CollectionFactory $collectionFactory
     ) {
         $this->modelFactory = $modelFactory;
         $this->resourceModel = $resourceModel;
+        $this->collectionFactory = $collectionFactory;
     }
-
+    /**
+     * Collection
+     *
+     * @return array
+     */
+    public function getCollection()
+    {
+        $collection = $this->collectionFactory->create();
+        return $collection->getData();
+    }
     /**
      * Get data
      *

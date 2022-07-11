@@ -5,7 +5,6 @@
         <column xsi:type="varchar" name="email" nullable="false" length="255" comment="Emp email"/>
         <column xsi:type="varchar" name="mobile" nullable="false" length="255" comment="Emp mobile"/>
         <column xsi:type="date" name="dob" nullable="false" comment="Date of birth"/>
-        <column xsi:type="mediumtext" name="address" nullable="false" comment="Address"/>
         <column xsi:type="date" name="doj" nullable="false" comment="Date of Joining"/>
         <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Creation Time"/>
@@ -15,4 +14,21 @@
             <column name="entity_id"/>
         </constraint>
     </table>
+    <table name="gagana_table" resource="default" engine="innodb" comment="employee Address ">
+        <column xsi:type="int" name="id" unsigned="false" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="int" name="emp_id" unsigned="false" nullable="false" identity="false" default="0" comment="Emp ID"/>
+        <column xsi:type="varchar" name="city" nullable="false" length="255" comment="City Name"/>
+        <column xsi:type="varchar" name="State" nullable="false" length="255" comment="State Name"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+            comment="Created At"/>
+        <column xsi:type="timestamp" name="last_visit_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+            comment="Last Visit Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+        <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="GAGANA_TABLE_EMP_ID_GAGANA_DB_ENTITY_ID"
+                table="gagana_table" column="emp_id" referenceTable="gagana_db"
+                referenceColumn="entity_id"/>
+    </table>
 </schema>
+

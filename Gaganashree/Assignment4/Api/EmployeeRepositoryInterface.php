@@ -13,4 +13,11 @@ interface EmployeeRepositoryInterface
      * @return Model
      */
     public function getDataBYId($id);
+
+    /**
+     * Get collection
+     *
+     * @return array
+     */
+    public function getCollection();
 }
