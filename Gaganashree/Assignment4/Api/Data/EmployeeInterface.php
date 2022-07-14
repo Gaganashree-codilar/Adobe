@@ -2,6 +2,7 @@
 
 namespace Gaganashree\Assignment4\Api\Data;
 
+use Gaganashree\Assignment4\Plugin\EmployeeRepositoryInterface;
 use Magento\Framework\Api\ExtensibleDataInterface;
 
 interface EmployeeInterface extends ExtensibleDataInterface
@@ -22,7 +23,7 @@ interface EmployeeInterface extends ExtensibleDataInterface
     /**
      * Get Entity id
      *
-     * @return int|null
+     * @return int
      */
     public function getEntityId();
 
@@ -32,7 +33,7 @@ interface EmployeeInterface extends ExtensibleDataInterface
      * @param int $entityId
      * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setEntityId($entityId);
+    public function setEntityId($entityId): EmployeeInterface;
 
     /**
      * Get created at time

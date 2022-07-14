@@ -8,4 +8,8 @@
         <plugin name="employee_repository_plugin"
                 type="Gaganashree\Assignment4\Plugin\EmployeeRepositoryInterface" sortOrder="1" />
     </type>
+    <type name="Gaganashree\Assignment4\Api\AddressRepositoryInterface">
+        <plugin name="address_repository_plugin"
+                type="Gaganashree\Assignment4\Plugin\AddressRepositoryInterface" sortOrder="1"/>
+    </type>
 </config>

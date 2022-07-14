@@ -14,4 +14,10 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    <route url="/V1/Gaganashree/Assignment4/Address/:id" method="GET">
+        <service class="Gaganashree\Assignment4\Api\AddressRepositoryInterface" method="getDataBYId"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
 </routes>

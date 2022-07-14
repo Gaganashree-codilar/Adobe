@@ -7,4 +7,11 @@
             </resources>
         </attribute>
     </extension_attributes>
+    <extension_attributes for="Gaganashree\Assignment4\Api\Data\AddressInterface">
+        <attribute code="entity_id" type="Gaganashree\Assignment4\Api\Data\EmployeeInterface[]">
+            <resources>
+                <resource ref="anonymous"/>
+            </resources>
+        </attribute>
+    </extension_attributes>
 </config>

@@ -50,7 +50,7 @@ class AddressAttributeRepository implements AddressRepositoryInterface
     {
         $model = $this->modelFactory->create();
         $this->resourceModel->load($model, $id);
-        return $model->getData();
+        return $model;
     }
     /**
      * Collection

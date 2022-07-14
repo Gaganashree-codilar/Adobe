@@ -60,4 +60,15 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         $this->resourceModel->load($model, $entityId);
         return $model;
     }
+    /**
+     * @param $Id
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
+     */
+    public function getById($Id)
+    {
+        $model= $this->modelFactory->create();
+        $collecton=$model->getCollection();
+        $collecton->addFieldToFilter('entity_id', $Id);
+        return $collecton->getData();
+    }
 }

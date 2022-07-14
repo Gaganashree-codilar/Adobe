@@ -20,4 +20,10 @@ interface EmployeeRepositoryInterface
      * @return array
      */
     public function getCollection();
+
+    /**
+     * @param $Id
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
+     */
+    public function getById($Id);
 }

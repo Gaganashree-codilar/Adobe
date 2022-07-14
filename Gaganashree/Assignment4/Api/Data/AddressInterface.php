@@ -9,7 +9,7 @@ interface AddressInterface extends ExtensibleDataInterface
     public const ID = 'id';
     public const EMP_ID = 'emp_id';
     public const CITY = 'city';
-    public const STATE = 'state';
+    public const STATE = 'State';
     public const CREATED_AT = 'created_at';
     public const LAST_VISIT_AT = 'last_visit_at';
 
@@ -33,7 +33,7 @@ interface AddressInterface extends ExtensibleDataInterface
      *
      * @return int
      */
-    public function getEmpId(): int;
+    public function getEmpId();
 
     /**
      * Set emp id
@@ -45,7 +45,7 @@ interface AddressInterface extends ExtensibleDataInterface
     /**
      * Get City
      *
-     * @return int
+     * @return string
      */
     public function getCity(): string;
 
@@ -67,6 +67,7 @@ interface AddressInterface extends ExtensibleDataInterface
     /**
      * Set state
      *
+     * * @param string $state
      * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
     public function setState(string $state);
@@ -105,7 +106,7 @@ interface AddressInterface extends ExtensibleDataInterface
     public function getExtensionAttributes();
 
     /**
-     * @param AddressExtensionInterface $extensionAttributes
+     * @param \Gaganashree\Assignment4\Api\Data\AddressExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(\Gaganashree\Assignment4\Api\Data\AddressExtensionInterface $extensionAttributes);

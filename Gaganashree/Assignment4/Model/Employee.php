@@ -35,7 +35,7 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
      * @param int $entityId
      * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setEntityId($entityId): string
+    public function setEntityId($entityId): EmployeeInterface
     {
         return $this->setData(self::ENTITY_ID, $entityId);
     }

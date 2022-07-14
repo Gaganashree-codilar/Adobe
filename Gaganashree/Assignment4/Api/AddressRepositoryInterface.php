@@ -10,7 +10,7 @@ interface AddressRepositoryInterface
      * Get data
      *
      * @param int $id
-     * @return Model
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
     public function getDataBYId($id);
 
@@ -18,7 +18,7 @@ interface AddressRepositoryInterface
      * Get data
      *
      * @param  int $id
-     * @return Model
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
     public function getAddressById($id);
 
