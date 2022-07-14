@@ -1,13 +1,10 @@
 <?xml version="1.0"?>
 <config>
-    <extension_attributes for="Gaganashree/Assignment4/Api/EmployeeRepositoryInterface">
-        <attribute code="emp_id" type="int">
+    <extension_attributes for="Gaganashree\Assignment4\Api\Data\EmployeeInterface">
+        <attribute code="emp_id" type="Gaganashree\Assignment4\Api\Data\AddressInterface[]">
             <resources>
-                <resource ref="permission"/>
+                <resource ref="anonymous"/>
             </resources>
-            <join reference_table="gagana_db" reference_field="entity_id" join_on_field="emp_id">
-                <field>emp_id</field>
-            </join>
         </attribute>
     </extension_attributes>
 </config>

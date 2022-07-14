@@ -14,5 +14,18 @@ interface AddressRepositoryInterface
      */
     public function getDataBYId($id);
 
-}
+    /**
+     * Get data
+     *
+     * @param  int $id
+     * @return Model
+     */
+    public function getAddressById($id);
 
+    /**
+     * Get collection
+     *
+     * @return array
+     */
+    public function getCollection();
+}

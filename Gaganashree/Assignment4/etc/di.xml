@@ -2,4 +2,10 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Gaganashree\Assignment4\Api\EmployeeRepositoryInterface" type="Gaganashree\Assignment4\Model\EmployeeRepository"/>
     <preference for="Gaganashree\Assignment4\Api\AddressRepositoryInterface" type="Gaganashree\Assignment4\Model\AddressAttributeRepository"/>
+    <preference for="Gaganashree\Assignment4\Api\Data\EmployeeInterface" type="Gaganashree\Assignment4\Model\Employee"/>
+    <preference for="Gaganashree\Assignment4\Api\Data\AddressInterface" type="Gaganashree\Assignment4\Model\AddressAttribute"/>
+    <type name="Gaganashree\Assignment4\Api\EmployeeRepositoryInterface">
+        <plugin name="employee_repository_plugin"
+                type="Gaganashree\Assignment4\Plugin\EmployeeRepositoryInterface" sortOrder="1" />
+    </type>
 </config>

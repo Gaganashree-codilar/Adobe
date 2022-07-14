@@ -9,10 +9,10 @@ interface EmployeeRepositoryInterface
     /**
      * Get data
      *
-     * @param int $id
-     * @return Model
+     * @param int $entityId
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function getDataBYId($id);
+    public function getDataBYId($entityId);
 
     /**
      * Get collection

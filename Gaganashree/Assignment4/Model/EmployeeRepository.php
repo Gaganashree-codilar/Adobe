@@ -6,6 +6,7 @@ use Gaganashree\Assignment4\Model\Employee as Model;
 use Gaganashree\Assignment4\Model\EmployeeFactory as ModelFactory;
 use Gaganashree\Assignment4\Model\ResourceModel\Employee as ResourceModel;
 use Gaganashree\Assignment4\Model\ResourceModel\Employee\CollectionFactory;
+use phpDocumentor\Reflection\Types\Collection;
 
 class EmployeeRepository implements EmployeeRepositoryInterface
 {
@@ -40,25 +41,23 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     /**
      * Collection
      *
-     * @return array
+     * @return Collection
      */
     public function getCollection()
     {
         $collection = $this->collectionFactory->create();
-        return $collection->getData();
+        return $collection;
     }
     /**
      * Get data
      *
-     * @param int $id
-     * @return Model
-    // * @throws NoSuchEntityException
+     * @param int $entityId
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function getDataBYId($id)
+    public function getDataBYId($entityId)
     {
         $model = $this->modelFactory->create();
-        $this->resourceModel->load($model, $id);
-        return $model->getData();
+        $this->resourceModel->load($model, $entityId);
+        return $model;
     }
 }
-

@@ -4,44 +4,48 @@ namespace Gaganashree\Assignment4\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
 
-
 interface AddressInterface extends ExtensibleDataInterface
 {
-    const ID = 'id';
-    const EMP_ID = 'emp_id';
-    const CITY = 'city';
-    const STATE = 'state';
-    const CREATED_AT = 'created_at';
-    const LAST_VISIT_AT = 'last_visit_at';
+    public const ID = 'id';
+    public const EMP_ID = 'emp_id';
+    public const CITY = 'city';
+    public const STATE = 'state';
+    public const CREATED_AT = 'created_at';
+    public const LAST_VISIT_AT = 'last_visit_at';
 
     /**
      * Get customer id
      *
-     * @return int|null
+     * @return int
      */
     public function getId();
+
     /**
      * Set  id
      *
-     * @return int|null
+     * @param $id
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
     public function setId($id);
+
     /**
      * Get Emp id
      *
-     * @return int|null
+     * @return int
      */
     public function getEmpId(): int;
+
     /**
      * Set emp id
      *
-     * @return int|null
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
-    public function setEmpId($emp_id);
+    public function setEmpId($empId);
+
     /**
      * Get City
      *
-     * @return int|null
+     * @return int
      */
     public function getCity(): string;
 
@@ -49,59 +53,60 @@ interface AddressInterface extends ExtensibleDataInterface
      * Set City
      *
      * @param string $city
-     * @return int|null
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
     public function setCity(string $city);
+
     /**
      * Get state
      *
-     * @return string|null
+     * @return string
      */
     public function getState();
+
     /**
      * Set state
      *
-     * @return string|null
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
     public function setState(string $state);
+
     /**
      * Get created at time
      *
-     * @return string|null
+     * @return string
      */
     public function getCreatedAt();
+
     /**
      * Set created at time
      *
-     * @return string|null
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
     public function setCreatedAt(string $createdAt);
+
     /**
      * Get lastvist at time
      *
-     * @return string|null
+     * @return string
      */
     public function getLastVisitAt(): string;
-    /**
-     * Set lastvisit at time
-     *
-     * @return string|null
-     */
-    public function setLastVisitAt(string $lastvisitat);
 
     /**
-     * Retrieve existing extension attributes object or create a new one.
-     *
-     * @return \Gaganashree\Assignment4\Api\Data\AddressExtensionInterface|null
+     * Set lastvisit at time
+     * @param string $lastVisitAt
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
+     */
+    public function setLastVisitAt($lastVisitAt);
+
+    /**
+     * @return \Gaganashree\Assignment4\Api\Data\AddressExtensionInterface
      */
     public function getExtensionAttributes();
 
     /**
-     * Set an extension attributes object.
-     *
-     * @param \Gaganashree\Assignment4\Api\Data\AddressExtensionInterface $extensionAttributes
+     * @param AddressExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(\Gaganashree\Assignment4\Api\Data\AddressExtensionInterface $extensionAttributes);
 }
-

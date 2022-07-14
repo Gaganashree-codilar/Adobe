@@ -3,23 +3,24 @@
 namespace Gaganashree\Assignment4\Model;
 
 use Magento\Framework\Model\AbstractModel;
-use Gaganashree\Assignment4\Api\Data\DataExtensionInterface;
-use Gaganashree\Assignment4\Api\Data\DataInterface;
+use Gaganashree\Assignment4\Api\Data\EmployeeExtensionInterface;
+use Gaganashree\Assignment4\Api\Data\EmployeeInterface;
 use Magento\Framework\Model\AbstractExtensibleModel;
 use Gaganashree\Assignment4\Model\ResourceModel\Employee as ResourceModel;
 
-class Employee extends AbstractModel
+class Employee extends AbstractExtensibleModel implements EmployeeInterface
 {
     /**
-     * Init
+     * Employee Constructor
      */
-
     protected function _construct()
     {
         $this->_init(ResourceModel::class);
     }
 
     /**
+     * Get entity id
+     *
      * @inerhitDoc
      * @return int
      */
@@ -29,102 +30,125 @@ class Employee extends AbstractModel
     }
 
     /**
+     * Set entity id
+     *
      * @param int $entityId
-     * @return DataInterface
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setEntityId($entityId): DataInterface
+    public function setEntityId($entityId): string
     {
         return $this->setData(self::ENTITY_ID, $entityId);
     }
+
     /**
-     * @param string $Name
-     * @return DataInterface
+     * Get name
+     *
+     * @return string
      */
     public function getName(): string
     {
-        return $this->getData(self::FIRSTNAME);
+        return $this->getData(self::NAME);
     }
 
     /**
-     * @param string $Name
-     * @return DataInterface
+     * Set name
+     *
+     * @param string $name
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setName(string $name): DataInterface
+    public function setName($name): String
     {
         return $this->setData(self::NAME, $name);
     }
+
     /**
-     * @param string $Email
-     * @return DataInterface
+     * Get email
+     *
+     * @return string
      */
     public function getEmail(): string
     {
-        return $this->getData(self::email);
+        return $this->getData(self::EMAIL);
     }
     /**
+     * Set email
+     *
      * @param string $email
-     * @return DataInterface
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setEmail(string $email): DataInterface
+    public function setEmail($email): EmployeeInterface
     {
-        return $this->setData(self::Email, $email);
+        return $this->setData(self::EMAIL, $email);
     }
+
     /**
-     * @param string $Mobile
-     * @return DataInterface
+     * Get mobile
+     *
+     * @return string
      */
     public function getMobile(): string
     {
-        return $this->getData(self::Mobile);
+        return $this->getData(self::MOBILE);
     }
+
     /**
-     * @param string $Mobile
-     * @return DataInterface
+     * Set mobile
+     *
+     * @param string $mobile
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setMobile(string $mobile): DataInterface
+    public function setMobile($mobile): EmployeeInterface
     {
-        return $this->setData(self::Mobile, $mobile);
+        return $this->setData(self::MOBILE, $mobile);
     }
+
     /**
-     * @param string $dob
-     * @return DataInterface
+     * Get dob
+     *
+     * @return string
      */
     public function getDob(): string
     {
-        return $this->getData(self::Dob);
+        return $this->getData(self::DOB);
     }
     /**
+     * Set dob
+     *
      * @param string $dob
-     * @return DataInterface
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setDob(string $dob): DataInterface
+    public function setDob($dob): EmployeeInterface
     {
         return $this->setData(self::DOB, $dob);
     }
     /**
+     * Get dob
+     *
      * @param string $doj
-     * @return DataInterface
+     * @return string
      */
     public function getDoj(): string
     {
-        return $this->getData(self::Doj);
+        return $this->getData(self::DOJ);
     }
     /**
+     * Set doj
+     *
      * @param string $doj
-     * @return DataInterface
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setDoj(string $doj): DataInterface
+    public function setDoj($doj): EmployeeInterface
     {
         return $this->setData(self::DOJ, $doj);
     }
+
     /**
      * Get created at time
      *
-     * @param string $createdAt
-     * @return $this
+     * @return string
      */
 
-    public function getCreatedAt(): string
+    public function getCreatedAt()
     {
         return $this->getData(self::CREATED_AT);
     }
@@ -132,10 +156,10 @@ class Employee extends AbstractModel
      * Set created at time
      *
      * @param string $createdAt
-     * @return $this
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
 
-    public function setCreatedAt(string $createdAt): DataInterface
+    public function setCreatedAt($createdAt): EmployeeInterface
     {
         return $this->setData(self::CREATED_AT, $createdAt);
     }
@@ -144,7 +168,7 @@ class Employee extends AbstractModel
      * Get updated at time
      *
      * @param string $updatedAt
-     * @return $this
+     * @return string
      */
     public function getUpdatedAt(): string
     {
@@ -155,10 +179,10 @@ class Employee extends AbstractModel
      * Set updated at time
      *
      * @param string $updatedAt
-     * @return $this
+     * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
 
-    public function setUpdatedAt(string $updatedAt): DataInterface
+    public function setUpdatedAt($updatedAt): EmployeeInterface
     {
         return $this->setData(self::UPDATED_AT, $updatedAt);
     }
@@ -173,8 +197,12 @@ class Employee extends AbstractModel
 
     /**
      * @inerhitDoc
+     *
+     * *
+     * @param \Gaganashree\Assignment4\Api\Data\EmployeeExtensionInterface $extensionAttributes
+     * @return $this
      */
-    public function setExtensionAttributes(\Gaganashree\Assignment4\Api\Data\DataExtensionInterface $extensionAttributes)
+    public function setExtensionAttributes(\Gaganashree\Assignment4\Api\Data\EmployeeExtensionInterface $extensionAttributes)
     {
         return $this->_setExtensionAttributes($extensionAttributes);
     }

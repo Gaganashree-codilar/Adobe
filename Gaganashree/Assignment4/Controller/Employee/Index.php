@@ -46,7 +46,7 @@ class Index extends Action
     public function execute()
     {
         $result = $this->jsonFactory->create();
-        $employeeData = $this->employeeRepositoryInterface->getCollection();
+        $employeeData = $this->employeeRepositoryInterface->getDataBYId(1);
         return $result->setData($employeeData);
     }
 }

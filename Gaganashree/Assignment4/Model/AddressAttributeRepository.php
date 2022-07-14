@@ -2,10 +2,12 @@
 namespace Gaganashree\Assignment4\Model;
 
 use Gaganashree\Assignment4\Api\AddressRepositoryInterface;
-use Gaganashree\Assignment4\Model\AddressAttribute as Model;
+use Gaganashree\Assignment4\Model\AddressAttributeFactory as ModelFactory;
 use Gaganashree\Assignment4\Model\ResourceModel\Address as ResourceModel;
 use Gaganashree\Assignment4\Api\Data\AddressInterface;
 use Gaganashree\Assignment4\Api\Data\AddressExtensionFactory;
+use Gaganashree\Assignment4\Model\ResourceModel\Address\CollectionFactory;
+use phpDocumentor\Reflection\Types\Collection;
 
 class AddressAttributeRepository implements AddressRepositoryInterface
 {
@@ -17,23 +19,32 @@ class AddressAttributeRepository implements AddressRepositoryInterface
      * @var ResourceModel
      */
     private $resourceModel;
+    /**
+     * @var CollectionFactory
+     */
+    private $CollectionFactory;
 
     /**
      * AddressAttributeRepository constructor.
      * @param ModelFactory $modelFactory
      * @param ResourceModel $resourceModel
+     * @param CollectionFactory $collectionFactory
      */
     public function __construct(
         ModelFactory $modelFactory,
-        ResourceModel $resourceModel
+        ResourceModel $resourceModel,
+        CollectionFactory $collectionFactory
     ) {
         $this->modelFactory = $modelFactory;
         $this->resourceModel = $resourceModel;
+        $this->collectionFactory = $collectionFactory;
     }
 
     /**
+     * Get data
+     *
      * @param int $id
-     * @return AddressAttribute
+     * @return \Gaganashree\Assignment4\Model\AddressAttribute
      */
     public function getDataBYId($id)
     {
@@ -41,9 +52,23 @@ class AddressAttributeRepository implements AddressRepositoryInterface
         $this->resourceModel->load($model, $id);
         return $model->getData();
     }
-    public function setAddressId(AddressInterface $address)
+    /**
+     * Collection
+     *
+     * @return Collection
+     */
+    public function getCollection()
     {
-        $extensionAttributes = $address->getExtensionAttributes();
-        $extensionAttributes = $extensionAttributes ? $extensionAttributes : $this->extensionFactory->create();
+        $collection = $this->collectionFactory->create();
+        return $collection;
+    }
+    /**
+     * @param $id
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
+     */
+    public function getAddressById($id)
+    {
+        $collection = $this->getCollection()->addFieldToFilter('emp_id', $id);
+        return $collection->getData();
     }
 }

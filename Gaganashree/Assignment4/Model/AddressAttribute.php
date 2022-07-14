@@ -19,6 +19,8 @@ class AddressAttribute extends AbstractExtensibleModel implements AddressInterfa
     }
 
     /**
+     * Get id
+     *
      * @inerhitDoc
      * @return int
      */
@@ -28,62 +30,113 @@ class AddressAttribute extends AbstractExtensibleModel implements AddressInterfa
     }
 
     /**
+     * Set id
+     *
      * @param int $id
-     * @return AddressInterface
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
      */
     public function setId($id): AddressInterface
     {
         return $this->setData(self::ID, $id);
     }
 
+    /**
+     * Get emp id
+     *
+     * @return int
+     */
     public function getEmpId(): int
     {
         return $this->getData(self::EMP_ID);
     }
 
-    public function setEmpId($emp_id): AddressInterface
+    /**
+     * Set emp id
+     *
+     * @param int $empId
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
+     */
+    public function setEmpId($empId): AddressInterface
     {
-        return $this->setData(self::emp_id, $emp_id);
+        return $this->setData(self::EMP_ID, $empId);
     }
-
+    /**
+     * Get city
+     *
+     * @return string
+     */
     public function getCity(): string
     {
         return $this->getData(self::CITY);
     }
-
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
+     */
     public function setCity(string $city): AddressInterface
     {
-        return $this->setData(self::city, $city);
+        return $this->setData(self::CITY, $city);
     }
-
+    /**
+     * Get state
+     *
+     * @return string
+     */
     public function getState(): string
     {
         return $this->getData(self::STATE);
     }
-
+    /**
+     * Set city
+     *
+     * @param string $state
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
+     */
     public function setState(string $state): AddressInterface
     {
-        return $this->setData(self::state, $state);
+        return $this->setData(self::STATE, $state);
     }
 
+    /**
+     * Get created at
+     *
+     * @return string
+     */
     public function getCreatedAt(): string
     {
         return $this->getData(self::CREATED_AT);
     }
 
+    /**
+     * Set created at
+     *
+     * @param string $createdAt
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
+     */
     public function setCreatedAt(string $createdAt):AddressInterface
     {
         return $this->setData(self::CREATED_AT, $createdAt);
     }
-
+    /**
+     * Get last visited at
+     *
+     * @return string
+     */
     public function getLastVisitAt(): string
     {
         return $this->getData(self::LAST_VISIT_AT);
     }
-
-    public function setLastVisitAt(string $lastvisitedat): AddressInterface
+    /**
+     * Set last visited at
+     *
+     * @param string $lastVisitedAt
+     * @return \Gaganashree\Assignment4\Api\Data\AddressInterface
+     */
+    public function setLastVisitAt($lastVisitedAt): AddressInterface
     {
-        return $this->setData(self::LAST_VISIT_AT, $lastvisitedat);
+        return $this->setData(self::LAST_VISIT_AT, $lastVisitedAt);
     }
 
     /**
@@ -95,7 +148,10 @@ class AddressAttribute extends AbstractExtensibleModel implements AddressInterfa
     }
 
     /**
+     *
      * @inerhitDoc
+     * @param \Gaganashree\Assignment4\Api\Data\AddressExtensionInterface $extensionAttributes
+     * @return $this
      */
     public function setExtensionAttributes(\Gaganashree\Assignment4\Api\Data\AddressExtensionInterface $extensionAttributes)
     {
