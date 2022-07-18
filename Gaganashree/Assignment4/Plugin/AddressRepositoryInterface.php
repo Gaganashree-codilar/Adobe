@@ -4,6 +4,7 @@ namespace Gaganashree\Assignment4\Plugin;
 use Gaganashree\Assignment4\Model\ResourceModel\Address\CollectionFactory;
 use Gaganashree\Assignment4\Api\Data\AddressExtensionFactory;
 use Gaganashree\Assignment4\Api\EmployeeRepositoryInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 
 class AddressRepositoryInterface
 {
@@ -21,6 +22,10 @@ class AddressRepositoryInterface
      * @var EmployeeRepositoryInterface
      */
     private EmployeeRepositoryInterface $employeeRepository;
+    /**
+     * @var SearchCriteriaBuilder
+     */
+    private SearchCriteriaBuilder $searchCriteria;
 
     /**
      * EmployeeRepositoryInterface constructor.
@@ -32,12 +37,14 @@ class AddressRepositoryInterface
     public function __construct(
         CollectionFactory $collectionFactory,
         AddressExtensionFactory $addressExtensionFactory,
-        EmployeeRepositoryInterface $employeeRepository
+        EmployeeRepositoryInterface $employeeRepository,
+        SearchCriteriaBuilder $searchCriteria
     )
     {
         $this->collectionFactory = $collectionFactory;
         $this->addressExtensionFactory = $addressExtensionFactory;
         $this->employeeRepository = $employeeRepository;
+        $this->searchCriteria = $searchCriteria;
     }
 
     /**
@@ -51,8 +58,8 @@ class AddressRepositoryInterface
         \Gaganashree\Assignment4\Api\AddressRepositoryInterface $subject,
         \Gaganashree\Assignment4\Api\Data\AddressInterface $address
     ) {
-        $addressData = $this->employeeRepository->getById($address->getEmpId());
-//        var_dump($addressData);die();
+        $listFilter = $this->searchCriteria->addFilter('entity_id', $address->getEmpId());
+        $addressData = $this->employeeRepository->getList($listFilter->create())->getItems();
         $extensionAttributes = $address->getExtensionAttributes();
         $employeeExtension = $extensionAttributes ? $extensionAttributes : $this->addressExtensionFactory->create();
         $employeeExtension->setEntityId($addressData);

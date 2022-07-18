@@ -3,6 +3,7 @@
 namespace Gaganashree\Assignment4\Api;
 
 use Gaganashree\Assignment4\Model\Employee as Model;
+use Magento\Framework\Api\SearchCriteriaInterface;
 
 interface EmployeeRepositoryInterface
 {
@@ -26,4 +27,10 @@ interface EmployeeRepositoryInterface
      * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
     public function getById($Id);
+
+    /**
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return mixed
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria);
 }

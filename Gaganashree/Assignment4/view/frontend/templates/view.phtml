@@ -1,0 +1,48 @@
+<?php
+/**
+ * @var View $block
+ */
+
+use Gaganashree\Assignment4\Block\View;
+
+$employees = $block->getAllData();
+?>
+<div class="employee-listing">
+    <h1>Employee List</h1>
+<!--    <span>-->
+<!--    <a href="--><?php //echo $block->getFormUrl()?><!--"><button style="background-color:#514943;color:#ffffff;color:white;">Add New Employee</button></a>-->
+<!--</span>-->
+    <?php if (count($employees) > 0): ?>
+        <table>
+            <thead>
+            <tr>
+                <th><?php echo __('Name') ?></th>
+                <th><?php echo __('Email') ?></th>
+                <th><?php echo __('Mobile') ?></th>
+                <th><?php echo __('Dob') ?></th>
+                <th><?php echo __('Doj') ?></th>
+                <th><?php echo __('CreatedAt') ?></th>
+                <th><?php echo __('UpdatedAt') ?></th>
+            </tr>
+            <?php foreach ($block->getAllData() as $employee): ?>
+                <tr>
+                    <td><?php echo $employee->getName() ?></td>
+                    <td><?php echo $employee->getEmail() ?></td>
+                    <td><?php echo $employee->getMobile() ?></td>
+                    <td><?php echo $employee->getDob() ?></td>
+                    <td><?php echo $employee->getDoj() ?></td>
+                    <td><?php echo $employee->getCreatedAt() ?></td>
+                    <td><?php echo $employee->getUpdatedAt() ?></td>
+                    <td>
+                    <span>
+                        <a href="<?php echo $block->getEditUrl(). 'entity_id/' . $employee->getEntityId()?>"><button style="background-color:#514943;color:white;">Edit</button></a>
+                    </span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </thead>
+        </table>
+    <?php else: ?>
+        <h3>Employee List is Empty</h3>
+    <?php endif; ?>
+</div>

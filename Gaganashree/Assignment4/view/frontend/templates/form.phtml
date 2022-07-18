@@ -1,0 +1,38 @@
+<?php
+/**
+ * @var View $block
+ */
+
+use Gaganashree\Assignment4\Block\View;
+$data=$block->getEmployees();
+//echo '<pre>';
+//var_dump($data['entity_id']);die();
+?>
+<form style="padding: 1rem; margin-top: 1rem; border: 1px solid silver" method="POST" action="<?php echo $block->getAddUrl() ?>" >
+    <h3>Employee Details</h3>
+    <div>
+        <label>Id</label>
+        <input name="entity_id" type="int" value="<?php echo $data['entity_id'] ?>"/>
+    </div>
+    <div>
+        <label>Name</label>
+        <input name="name" type="text" value="<?php echo $data['name'] ?? null ?>"/>
+    </div>
+    <div>
+        <label>Email</label>
+        <input name="email" type="text" value="<?php echo $data['email'] ?? null ?>"/>
+    </div>
+    <div>
+        <label>Mobile No</label>
+        <input name="mobile" type="text" value="<?php echo $data['mobile'] ?? null ?>" />
+    </div>
+    <div>
+        <label>Date of Birth</label>
+        <input name="dob" type="date" value="<?php echo $data['dob'] ?? null ?>"/>
+    </div>
+    <div>
+        <label>Date of Joining</label>
+        <input name="doj" type="date" value="<?php echo $data['doj'] ?? null ?>"/>
+    </div>
+    <button>Submit</button>
+</form>

@@ -56,7 +56,7 @@ class Employee extends AbstractExtensibleModel implements EmployeeInterface
      * @param string $name
      * @return \Gaganashree\Assignment4\Api\Data\EmployeeInterface
      */
-    public function setName($name): String
+    public function setName($name): EmployeeInterface
     {
         return $this->setData(self::NAME, $name);
     }

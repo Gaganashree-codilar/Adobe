@@ -21,17 +21,17 @@ class Collection extends AbstractCollection
      *
      * @return $this|Collection|void
      */
-    protected function _initSelect()
-    {
-        $this->getSelect()
-             ->from(['main_table' => $this->getMainTable()])
-             ->join(
-                 'gagana_table',
-                 'main_table.entity_id = gagana_table.emp_id',
-                 ['*']
-             );
+//    protected function _initSelect()
+//    {
+//        $this->getSelect()
+//             ->from(['main_table' => $this->getMainTable()])
+//             ->join(
+//                 'gagana_table',
+//                 'main_table.entity_id = gagana_table.emp_id',
+//                 ['*']
+//             );
 //        var_dump($this->getData());die();
 //        var_dump($this->getMainTable());die();
-        return $this;
-    }
+//        return $this;
+//    }
 }
