@@ -5,6 +5,7 @@ namespace Gaganashree\Assignment4\Plugin;
 use Gaganashree\Assignment4\Model\ResourceModel\Employee\CollectionFactory;
 use Gaganashree\Assignment4\Api\Data\EmployeeExtensionFactory;
 use Gaganashree\Assignment4\Api\AddressRepositoryInterface;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 
 class EmployeeRepositoryInterface
 {
@@ -32,11 +33,13 @@ class EmployeeRepositoryInterface
     public function __construct(
         CollectionFactory $collectionFactory,
         EmployeeExtensionFactory $employeeExtensionFactory,
-        AddressRepositoryInterface $addressRepository
+        AddressRepositoryInterface $addressRepository,
+        SearchCriteriaBuilder $searchCriteria
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->employeeExtensionFactory = $employeeExtensionFactory;
         $this->addressRepository = $addressRepository;
+        $this->searchCriteria = $searchCriteria;
     }
 
     /**
@@ -51,7 +54,8 @@ class EmployeeRepositoryInterface
         \Gaganashree\Assignment4\Api\EmployeeRepositoryInterface $subject,
         \Gaganashree\Assignment4\Api\Data\EmployeeInterface $employee
     ) {
-        $addressData=$this->addressRepository->getAddressById($employee->getEntityId());
+        $listFilter = $this->searchCriteria->addFilter('emp_id', $employee->getEntityId());
+        $addressData=$this->addressRepository->getList($listFilter->create())->getItems();
         $extensionAttributes=$employee->getExtensionAttributes();
         $employeeExtension = $extensionAttributes ? $extensionAttributes : $this->employeeExtensionFactory->create();
         $employeeExtension->setEmpId($addressData);

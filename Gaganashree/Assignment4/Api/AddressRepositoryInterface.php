@@ -3,6 +3,7 @@
 namespace Gaganashree\Assignment4\Api;
 
 use Gaganashree\Assignment4\Model\AddressAttribute as Model;
+use Magento\Framework\Api\SearchCriteriaInterface;
 
 interface AddressRepositoryInterface
 {
@@ -28,4 +29,10 @@ interface AddressRepositoryInterface
      * @return array
      */
     public function getCollection();
+
+    /**
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return mixed
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria);
 }

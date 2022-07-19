@@ -108,4 +108,22 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         $searchResult->setSearchCriteria($searchCriteria);
         return $searchResult;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function saveData($data)
+    {
+        $model= $this->modelFactory->create();
+        if (!empty($data['entity_id'])) {
+            $model=$this->load($data['entity_id']);
+        }
+        $model->setName($data['name']);
+        $model->setEmail($data['email']);
+        $model->setMobile($data['mobile']);
+        $model->setDob($data['dob']);
+        $model->setDoj($data['doj']);
+        $this->resourceModel->save($model);
+        return $model->getName()." Saved Successfully";
+    }
 }

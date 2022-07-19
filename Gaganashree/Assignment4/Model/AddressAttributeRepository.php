@@ -7,7 +7,10 @@ use Gaganashree\Assignment4\Model\ResourceModel\Address as ResourceModel;
 use Gaganashree\Assignment4\Api\Data\AddressInterface;
 use Gaganashree\Assignment4\Api\Data\AddressExtensionFactory;
 use Gaganashree\Assignment4\Model\ResourceModel\Address\CollectionFactory;
-use phpDocumentor\Reflection\Types\Collection;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessor;
+use Magento\Framework\Api\SearchCriteriaInterface;
+use Gaganashree\Assignment4\Api\Data\EmployeeSearchResultInterfaceFactory;
+
 
 class AddressAttributeRepository implements AddressRepositoryInterface
 {
@@ -23,21 +26,46 @@ class AddressAttributeRepository implements AddressRepositoryInterface
      * @var CollectionFactory
      */
     private $CollectionFactory;
+    /**
+     * @var EmployeeSearchResultInterfaceFactory|EmployeeSearchResultInterface
+     */
+    private EmployeeSearchResultInterface|EmployeeSearchResultInterfaceFactory $employeeSearchResultInterfaceFactory;
+    /**
+     * @var CollectionProcessor
+     */
+    private CollectionProcessor $collectionProcessor;
+    /**
+     * @var SearchCriteriaInterface
+     */
+    private SearchCriteriaInterface $searchCriteria;
+    /**
+     * @var CollectionFactory
+     */
+    private CollectionFactory $collectionFactory;
 
     /**
      * AddressAttributeRepository constructor.
      * @param ModelFactory $modelFactory
      * @param ResourceModel $resourceModel
      * @param CollectionFactory $collectionFactory
+     * @param SearchCriteriaInterface $searchCriteria
+     * @param EmployeeSearchResultInterface $employeeSearchResultInterfaceFactory
+     * @param CollectionProcessor $collectionProcessor
      */
     public function __construct(
         ModelFactory $modelFactory,
         ResourceModel $resourceModel,
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        SearchCriteriaInterface $searchCriteria,
+        EmployeeSearchResultInterfaceFactory $employeeSearchResultInterfaceFactory,
+        CollectionProcessor  $collectionProcessor
     ) {
         $this->modelFactory = $modelFactory;
         $this->resourceModel = $resourceModel;
         $this->collectionFactory = $collectionFactory;
+        $this->searchCriteria = $searchCriteria;
+        $this->collectionProcessor = $collectionProcessor;
+        $this->employeeSearchResultInterfaceFactory = $employeeSearchResultInterfaceFactory;
     }
 
     /**
@@ -70,5 +98,20 @@ class AddressAttributeRepository implements AddressRepositoryInterface
     {
         $collection = $this->getCollection()->addFieldToFilter('emp_id', $id);
         return $collection->getData();
+    }
+
+    /**
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return 
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria)
+    {
+        $list= $this->collectionFactory->create();
+        $this->collectionProcessor->process($searchCriteria, $list);
+        $searchResult=$this->employeeSearchResultInterfaceFactory->create();
+        $searchResult->setItems($list->getItems());
+        $searchResult->setTotalCount($list->getSize());
+        $searchResult->setSearchCriteria($searchCriteria);
+        return $searchResult;
     }
 }

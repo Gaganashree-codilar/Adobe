@@ -39,8 +39,7 @@ class AddressRepositoryInterface
         AddressExtensionFactory $addressExtensionFactory,
         EmployeeRepositoryInterface $employeeRepository,
         SearchCriteriaBuilder $searchCriteria
-    )
-    {
+    ) {
         $this->collectionFactory = $collectionFactory;
         $this->addressExtensionFactory = $addressExtensionFactory;
         $this->employeeRepository = $employeeRepository;
@@ -59,9 +58,9 @@ class AddressRepositoryInterface
         \Gaganashree\Assignment4\Api\Data\AddressInterface $address
     ) {
         $listFilter = $this->searchCriteria->addFilter('entity_id', $address->getEmpId());
-        $addressData = $this->employeeRepository->getList($listFilter->create())->getItems();
         $extensionAttributes = $address->getExtensionAttributes();
         $employeeExtension = $extensionAttributes ? $extensionAttributes : $this->addressExtensionFactory->create();
+        $addressData = $this->employeeRepository->getList($listFilter->create())->getItems();
         $employeeExtension->setEntityId($addressData);
         $address->setExtensionAttributes($employeeExtension);
         return $address;

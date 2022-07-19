@@ -20,4 +20,17 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    <route url="/V1/Gaganashree/Assignment4/save/" method="POST">
+        <service class="Gaganashree\Assignment4\Api\EmployeeRepositoryInterface" method="saveData"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Edit  Data-->
+    <route url="/V1/Gaganashree/Assignment4/edit/" method="POST">
+        <service class="Gaganashree\Assignment4\Api\EmployeeRepositoryInterface" method="saveData"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
 </routes>

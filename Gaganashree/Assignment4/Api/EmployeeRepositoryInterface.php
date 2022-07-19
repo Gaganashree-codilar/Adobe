@@ -2,6 +2,7 @@
 
 namespace Gaganashree\Assignment4\Api;
 
+use Gaganashree\Assignment4\Api\Data\EmployeeInterface;
 use Gaganashree\Assignment4\Model\Employee as Model;
 use Magento\Framework\Api\SearchCriteriaInterface;
 
@@ -33,4 +34,12 @@ interface EmployeeRepositoryInterface
      * @return mixed
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
+
+    /**
+     * @param EmployeeInterface $data
+     * @return string
+     */
+    public function saveData($data);
+
+
 }
