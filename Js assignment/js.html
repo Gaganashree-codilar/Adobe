@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </script>
+    <script>
+        $('document').ready(function () {
+            $('#btnAdd').click(function () {
+                var num1 = $("#num1").val();
+                var num2 = $("#num2").val();
+                var sum = parseInt(num1) + parseInt(num2);
+                $('#total').val(sum);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <label>Enter Input1</label>
+    <input id="num1" name="input1" />
+    <label>Enter Input2</label>
+    <input id="num2" name="input2" />
+    <button id="btnAdd" type="button"> Add</button>
+    <label>Result</label>
+    <input id="total" name="sum" />
+</body>
+
+</html>
